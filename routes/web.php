@@ -6,16 +6,35 @@ Route::get('/', fn () => view('home'));
 Route::get('/dashboard', fn () => view('dashboard'));
 
 Route::prefix('academic')->name('academic.')->group(function () {
+
+    //années académiques
     Route::get('academic-years', fn () => view('academic.academic-years.academic-years-index'))->name('academic-years.index');
-
     Route::get('academic-years/create', fn () => view('academic.academic-years.academic-years-create'))->name('academic-years.create');
-
     Route::get('academic-years/{id}/edit', fn ($id) => view('academic.academic-years.academic-years-edit', compact('id')))->name('academic-years.edit');
 
+    //filières
     Route::get('programs', fn () => view('academic.programs.programs-index'))->name('programs.index');
-
     Route::get('programs/create', fn () => view('academic.programs.programs-create'))->name('programs.create');
-
     Route::get('programs/{id}/edit', fn ($id) => view('academic.programs.programs-edit', compact('id')))->name('programs.edit');
+
+    //spécialités
+    Route::get('specialities', fn () => view('academic.specialities.specialities-index'))->name('specialities.index');
+    Route::get('specialities/create', fn () => view('academic.specialities.specialities-create'))->name('specialities.create');
+    Route::get('specialities/{id}/edit', fn ($id) => view('academic.specialities.specialities-edit', compact('id')))->name('specialities.edit');
+
+    //niveaux d'études
+    Route::get('levels', fn () => view('academic.levels.levels-index'))->name('levels.index');
+    Route::get('levels/create', fn () => view('academic.levels.levels-create'))->name('levels.create');
+    Route::get('levels/{id}/edit', fn ($id) => view('academic.levels.levels-edit', compact('id')))->name('levels.edit');
+
+    //semestres
+    Route::get('semesters', fn () => view('academic.semesters.semesters-index'))->name('semesters.index');
+    Route::get('semesters/create', fn () => view('academic.semesters.semesters-create'))->name('semesters.create');
+    Route::get('semesters/{id}/edit', fn ($id) => view('academic.semesters.semesters-edit', compact('id')))->name('semesters.edit');
+
+    //unités d'enseignement
+    Route::get('course-units', fn () => view('academic.course-units.course-units-index'))->name('course-units.index');
+    Route::get('course-units/create', fn () => view('academic.course-units.course-units-create'))->name('course-units.create');
+    Route::get('course-units/{id}/edit', fn ($id) => view('academic.course-units.course-units-edit', compact('id')))->name('course-units.edit');
 
 });
